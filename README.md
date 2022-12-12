@@ -35,10 +35,13 @@ This is used for decrypting a directory and it's sub-directories contents.
 This is used for backing up the current ```loki.key``` file or for generating a new one, don't loose it!
 
 `-hook` ✔
-This is for sending files to yourself via Discord Webooks (dhooks), the sFTP or SCP commands in Linux. At present and by default it'll only send the ```loki.key``` file along with a message to Discord Webooks (dhooks).
+This is for sending files to yourself via Discord Webooks (dhooks), at present and by default it'll only send the ```loki.key``` file along with a message to Discord Webooks (dhooks).
 
 `-vault` 🚧
 Vault can be used to secure copy files from remote servers, or locally, into Loki's vault system which has a unique and seperate key as a whole to ```loki.key``` - it's strongly suggested you only add or remove files from the vault through Loki as to avoid accident file destruction.
+
+`-share` ❌
+Send files over the Linux scp command, but it gets packaged up in a nice lokified zip first.
 
 ## Acknowledgements: ❗
 ### Supporters;

@@ -62,3 +62,5 @@ def encrypt():
                 sys.exit(0) # Attempts to exit.
             except SystemExit:
                 os._exit(0) # Attempts to exit.
+        except FileNotFoundError as not_found:
+            print("This file is missing:" + not_found.filename)

