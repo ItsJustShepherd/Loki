@@ -50,16 +50,16 @@ def decrypt(files):
         key = loki_key.read()
 
     # decrypt files
-    for filePath in files:
+    for path in files:
         # Skip self
-        if '.py' in filePath:
+        if '.py' in path:
             continue
         # Skip key
-        if 'loki.key' in filePath:
+        if 'loki.key' in path:
             continue
         
         # Handle file
-        handleFile(filePath, key, "d")
+        handleFile(path, key, "d")
         # NOTE (mart): Why handle actions when "d" is hardcoded?
         #              Maybe un-hardcode it, and just assume decrypting,
         #              or move it to a seperate file to handle both.
