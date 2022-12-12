@@ -9,33 +9,36 @@
 - Key generation. ✔
 - Ransomware* ✔
 - Discord webhooks. ✔
-- sFTP + scp file sending. ❌
-- Vault. ❌
+- Lokified scp file sending. ❌
+- Vault. 🚧
 - Share. ❌
 
 ## Installation & Deployment: 💾
 To deploy this project open WSL or Terminal, then copy/paste:
 
-```cd /home/$USER && git clone https://github.com/ItsJustShepherd/LOKI && cd LOKI && sudo pip install -r requirements.txt && python3 loki.py```
+```cd /home/$USER && git clone https://github.com/ItsJustShepherd/Loki && cd LOKI && sudo pip install -r requirements.txt && python3 loki.py```
 
 You can add this to an alias with the following:
 
-```alias loki="python3 /home/$USER/LOKI/loki.py"```
+```alias loki="python3 /home/$USER/Loki/loki.py"```
 
 ## Variables: ⚙
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you can either use arguements (shown below) or run it with `python3 loki.py` to get a CLI-menu.
 
-`-encrypt`
+`-encrypt` ✔
 This is used for encrypting a directory and it's sub-directories contents.
 
-`-decrypt`
+`-decrypt` ✔
 This is used for decrypting a directory and it's sub-directories contents.
 
-`-keygen`
+`-keygen` ✔
 This is used for backing up the current ```loki.key``` file or for generating a new one, don't loose it!
 
-`-hook`
+`-hook` ✔
 This is for sending files to yourself via Discord Webooks (dhooks), the sFTP or SCP commands in Linux. At present and by default it'll only send the ```loki.key``` file along with a message to Discord Webooks (dhooks).
+
+`-vault` 🚧
+Vault can be used to secure copy files from remote servers, or locally, into Loki's vault system which has a unique and seperate key as a whole to ```loki.key``` - it's strongly suggested you only add or remove files from the vault through Loki as to avoid accident file destruction.
 
 ## Acknowledgements: ❗
 ### Supporters;
@@ -56,6 +59,8 @@ Yes, one of the biggest reasons Loki was developed was for privacy purposes - so
 Unfortunately, not much, unless you've made a backup.  By default when using ```-keygen``` Loki will prompt you asking if you'd like to back up your previous key, if you selected yes just do the following:
 ```mv loki.key loki.key.alt && cp loki.key.bk loki.key && mv loki.key.alt loki.key.bk```this will swap your backup and current keys around. Due to the nature of encryption/decryption it might not even be possible to recover any files you've encrypted if your key is lost, or damaged. However the [Cryptex](https://github.com/SSGorg/Cryptex) dev-team is working with me on a reverse enginering of Loki already, so one day we can add in a key recovery service type function!
 
+In future there will be a ```-swapout``` argument which simplifies this.
+
 #### Doesn't it look suspicious if your encrypting your data?
 
 Not at all, and why should it?
@@ -74,27 +79,7 @@ Please, if you're in the EU take a moment to read over your rights [here](https:
 
 Fernet Encryption is used at present and is a Python standard for encryption/authentication that guarantees a message (for example: "Hello, this is an encryption") is encrypted securely enough that it cannot be manipulated or read without the key. Fernet is an implementation of symmetric (also known as “secret key”) authenticated cryptography.
 
-At present Loki currently affects the following;
-- .png
-- .jpg
-- .jpeg
-- .gif
-- .tiff
-- .bmp
-- .svg
-- .heif
-- .raw
-- .mp4
-- .wav
-- .doc
-- .docx
-- .odt
-- .rtf
-- .tex
-- .txt
-- .pdf
-- .zip
-- .rar
+At present Loki currently affects all formats, but you can modify Loki to ignore certain extentions by editing the code directly.
 
 ## Unlicense: 📃
 [Unlicense.org](https://unlicense.org/) - TL;DR; "Anyone is free to copy, modify, publish, use, compile, sell, or
